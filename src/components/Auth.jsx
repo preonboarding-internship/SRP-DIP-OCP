@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
 
 function Auth() {
   const [userInputs, setUserInputs] = useState({
@@ -10,20 +9,16 @@ function Auth() {
 
   const saveUserInputs = ({ target }) => {
     const { name, value } = target;
+
     setUserInputs((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const { signin, signup, logout } = useAuth();
-
-  const handleSignup = () => {
-    signup(email, password);
-  };
-  const handleSignin = () => {
-    signin(email, password);
-  };
+  const signin = () => {};
+  const signup = () => {};
+  const logout = () => {};
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
@@ -39,8 +34,8 @@ function Auth() {
           <input value={password} name="password" onChange={saveUserInputs} />
         </label>
       </div>
-      <button onClick={handleSignin}>signin</button>
-      <button onClick={handleSignup}>signup</button>
+      <button onClick={signin}>signin</button>
+      <button onClick={signup}>signup</button>
       <button onClick={logout}>logout</button>
     </form>
   );

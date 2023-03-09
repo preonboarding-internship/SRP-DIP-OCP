@@ -1,18 +1,16 @@
 import { useState } from "react";
-import { useTodo } from "../context/TodoContext";
+
+const todos = [];
 
 function Todos() {
   const [newTodo, setNewTodo] = useState("");
 
-  const { todos, create } = useTodo();
-
-  const createTodo = () => {
-    create(newTodo);
-  };
+  const saveUserInput = (e) => setNewTodo(e.target.value);
+  const createTodo = () => {};
 
   return (
     <div>
-      <input value={newTodo} onChange={(e) => setNewTodo(e.target.value)} />
+      <input value={newTodo} onChange={saveUserInput} />
       <button onClick={createTodo}>create</button>
       {todos?.map(({ id, todo }) => (
         <li key={id}>{todo}</li>
