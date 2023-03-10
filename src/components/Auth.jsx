@@ -1,4 +1,10 @@
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+
+// React
+// React
+// UI rendering
+// state management
 
 function Auth() {
   const [userInputs, setUserInputs] = useState({
@@ -16,9 +22,21 @@ function Auth() {
     }));
   };
 
-  const signin = () => {};
-  const signup = () => {};
-  const logout = () => {};
+  const {
+    signin: signinService,
+    signup: signupService,
+    logout: logOutService,
+  } = useAuth();
+
+  const signin = () => {
+    signinService(email, password);
+  };
+  const signup = () => {
+    signupService(email, password);
+  };
+  const logout = () => {
+    logOutService();
+  };
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>

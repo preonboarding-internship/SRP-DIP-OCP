@@ -1,12 +1,14 @@
 import { useState } from "react";
-
-const todos = [];
+import { useTodo } from "../context/TodoContext";
 
 function Todos() {
   const [newTodo, setNewTodo] = useState("");
+  const { todos, create } = useTodo();
 
   const saveUserInput = (e) => setNewTodo(e.target.value);
-  const createTodo = () => {};
+  const createTodo = () => {
+    create(newTodo);
+  };
 
   return (
     <div>
