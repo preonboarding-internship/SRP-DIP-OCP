@@ -9,13 +9,13 @@ function Todos() {
   const createTodo = () => {};
 
   return (
-    <div>
+    <form onSubmit={createTodo}>
       <input value={newTodo} onChange={saveUserInput} />
-      <button onClick={createTodo}>create</button>
+      <button>create</button>
       {todos?.map(({ id, todo }) => (
         <li key={id}>{todo}</li>
       ))}
-    </div>
+    </form>
   );
 }
 
